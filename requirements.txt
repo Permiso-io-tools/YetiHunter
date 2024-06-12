@@ -1,0 +1,6 @@
+snowflake
+snowflake-connector-python
+prettytable
+termcolor
+argparse
+pandas

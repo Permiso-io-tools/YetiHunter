@@ -1,0 +1,67 @@
+[
+    {
+        "name": "select_all_without_where",
+        "description": "select * queries that do not contain a WHERE clause",
+        "query": "SELECT query_id, user_name, query_text FROM snowflake.account_usage.query_history WHERE query_text ILIKE 'SELECT *' AND query_text NOT ILIKE '%WHERE%';"
+    },
+    {
+        "name": "copy_into_select_all",
+        "description": "COPY INTO and select * in a single query.",
+        "query": "SELECT query_id, user_name, query_text FROM snowflake.account_usage.query_history WHERE query_text ILIKE 'COPY INTO%' AND query_text ILIKE 'SELECT *%';"
+    },
+    {
+        "name": "show_tables",
+        "description": "Performing a show tables query",
+        "query": "SELECT query_id, user_name, query_text FROM snowflake.account_usage.query_history WHERE query_text ILIKE 'SHOW TABLES';"
+    },
+    {
+        "name": "create_temp_storage",
+        "description": "",
+        "query": "SELECT query_id, user_name, query_text FROM snowflake.account_usage.query_history WHERE query_text ILIKE 'CREATE TEMP%' AND query_text ILIKE '%STORAGE%';"
+    },
+    {
+        "name": "10_largest_queries",
+        "description": "Top 10 largest queries by rows_produced",
+        "query": "SELECT query_id, user_name, query_text, rows_produced FROM snowflake.account_usage.query_history WHERE rows_produced > 2000 ORDER BY rows_produced DESC LIMIT 10;"
+    },
+    {
+        "name": "dbeaver_used",
+        "description": "DBEAVER Usage",
+        "query": "SELECT created_on, user_name, authentication_method, PARSE_JSON(client_environment) :APPLICATION :: STRING AS client_application, PARSE_JSON(client_environment) :OS :: STRING AS client_os, PARSE_JSON(client_environment) :OS_VERSION :: STRING AS client_os_version, session_id FROM snowflake.account_usage.sessions, WHERE PARSE_JSON(CLIENT_ENVIRONMENT):APPLICATION = 'DBeaver_DBeaverUltimate' ORDER BY CREATED_ON;"
+    },
+    {
+        "name": "accountadmin_changes",
+        "description": "Role grants",
+        "query": "select user_name || ' granted the ' || role_name || ' role on ' || end_time ||' [' || query_text ||']' as Grants from snowflake.account_usage.query_history where execution_status = 'SUCCESS' and query_type = 'GRANT' and query_text ilike '%grant%accountadmin%to%' order by end_time desc;"
+    },
+    {
+        "name": "impactful_modifications",
+        "description": "Impactful modifications",
+        "query": "SELECT start_time, user_name, role_name, query_type, query_text FROM snowflake.account_usage.query_history WHERE execution_status = 'SUCCESS' AND query_type NOT in ('SELECT') AND query_type NOT in ('SHOW') AND query_type NOT in ('DESCRIBE') AND (query_text ILIKE '%create role%' OR query_text ILIKE '%manage grants%' OR query_text ILIKE '%create integration%' OR query_text ILIKE '%alter integration%' OR query_text ILIKE '%create share%' OR query_text ILIKE '%create account%' OR query_text ILIKE '%monitor usage%' OR query_text ILIKE '%ownership%' OR query_text ILIKE '%drop table%' OR query_text ILIKE '%drop database%' OR query_text ILIKE '%create stage%' OR query_text ILIKE '%drop stage%' OR query_text ILIKE '%alter stage%' OR query_text ILIKE '%create user%' OR query_text ILIKE '%alter user%' OR query_text ILIKE '%drop user%' OR query_text ILIKE '%create_network_policy%' OR query_text ILIKE '%alter_network_policy%' OR query_text ILIKE '%drop_network_policy%' OR query_text ILIKE '%copy%' ) ORDER BY end_time desc;"
+    },
+    {
+        "name": "least_common_applications_used",
+        "description": "Applications by prevelance",
+        "query": "SELECT COUNT(*) AS client_app_count, PARSE_JSON(client_environment) :APPLICATION :: STRING AS client_application, PARSE_JSON(client_environment) :OS :: STRING AS client_os, PARSE_JSON(client_environment) :OS_VERSION :: STRING AS client_os_version FROM snowflake.account_usage.sessions sessions WHERE 1 = 1 AND sessions.created_on >= '2024-04-01' GROUP BY ALL ORDER BY 1 DESC;"
+    },
+    {
+        "name": "copy_http",
+        "description": "A Query containing COPY INTO and http keyword",
+        "query": "SELECT start_time, query_id, user_name, query_text FROM snowflake.account_usage.query_history WHERE CONTAINS(QUERY_TEXT, 'COPY INTO') AND CONTAINS(QUERY_TEXT, 'http');"
+    },
+    {
+        "name": "get_file",
+        "description": "Get file contents",
+        "query": "SELECT start_time, query_id, user_name, query_text FROM snowflake.account_usage.query_history WHERE query_text ilike '%GET' AND query_text ilike '%file:%';"
+    },
+    {
+        "name": "session_usage",
+        "description": "",
+        "query": "SELECT COUNT(*) AS client_app_count, PARSE_JSON(client_environment) :APPLICATION :: STRING AS client_application, PARSE_JSON(client_environment) :OS :: STRING AS client_os, PARSE_JSON(client_environment) :OS_VERSION :: STRING AS client_os_version FROM snowflake.account_usage.sessions sessions WHERE sessions.created_on >= '2024-04-01' GROUP BY ALL ORDER BY 1 ASC;"
+    },
+    {
+        "name": "frostbite_used",
+        "description": "FROSTBITE usage",
+        "query": "SELECT created_on, user_name, authentication_method, PARSE_JSON(client_environment) :APPLICATION :: STRING AS client_application, PARSE_JSON(client_environment) :OS :: STRING AS client_os, PARSE_JSON(client_environment) :OS_VERSION :: STRING AS client_os_version, session_id FROM snowflake.account_usage.sessions, WHERE PARSE_JSON(CLIENT_ENVIRONMENT):APPLICATION = 'rapeflake' ORDER BY CREATED_ON;"
+    }
+]
