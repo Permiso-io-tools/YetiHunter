@@ -8,8 +8,10 @@ from core.Other.PrintOutput.PrintOutput import printOutput
 from core.Other.Resources.OutputDump import dumpCSV
 from core.QueryActivity.QueryActivities import Query
 from core.Other.Resources.Queries import QUERIES
-
+from core.Other.Arguments.Banner import printBanner
 args = parseArgs()
+
+printBanner()
 
 if not os.path.exists("./configfiles"):
     os.mkdir("./configfiles")

@@ -1,5 +1,19 @@
 # yetihunter
-Permiso Security has created a tool to query snowflake environments for evidence of compromise, based on indicators from Permiso and the community.
+Permiso Security has created a tool to query snowflake environments for evidence of compromise, based on indicators from Permiso and the community.\
+**Release Blog:** [[Introducing YetiHunter an open-source tool to detect and hunt for suspicious activity in snowflake](https://permiso.io/blog/introducing-yetihunter-an-open-source-tool-to-detect-and-hunt-for-suspicous-activity-in-snowflake)]
+````
+
+                ('-.   .-') _           ('-. .-.                  .-') _  .-') _     ('-.  _  .-')
+              _(  OO) (  OO) )         ( OO )  /                 ( OO ) )(  OO) )  _(  OO)( \( -O )
+  ,--.   ,--.(,------./     '._ ,-.-') ,--. ,--. ,--. ,--.   ,--./ ,--,' /     '._(,------.,------.
+   \  `.'  /  |  .---'|'--...__)|  |OO)|  | |  | |  | |  |   |   \ |  |\ |'--...__)|  .---'|   /`. '
+ .-')     /   |  |    '--.  .--'|  |  \|   .|  | |  | | .-') |    \|  | )'--.  .--'|  |    |  /  | |
+(OO  \   /   (|  '--.    |  |   |  |(_/|       | |  |_|( OO )|  .     |/    |  |  (|  '--. |  |_.' |
+ |   /  /\_   |  .--'    |  |  ,|  |_.'|  .-.  | |  | | `-' /|  |\    |     |  |   |  .--' |  .  '.'
+ `-./  /.__)  |  `---.   |  | (_|  |   |  | |  |('  '-'(_.-' |  | \   |     |  |   |  `---.|  |\  \
+   `--'       `------'   `--'   `--'   `--' `--'  `-----'    `--'  `--'     `--'   `------'`--' '--'
+                                                                       by Permiso Security
+````
 ## Installation
 ### Local Installation
 To install, the only thing needed, is to install the required libraries.
@@ -73,7 +87,7 @@ options:
 ## Usage
 ### Authenticating
 #### Authenticating using user and password
-To connect with a Snowflake user and a password, you need to pass those informations, along with the account name, the warehouse name, the database name and optionally the database schema name:
+To connect with a Snowflake user and a password, you need to pass those information, along with the account name, the warehouse name, the database name and optionally the database schema name:
 ````
 $ python3 main.py -a <account id> -u <user> -w <warehouse> -d <database> -am USERPASS
 [*] Successfully Authenticated to warehouse <warehouse> as user <user>!
