@@ -77,6 +77,7 @@ else:
     database = args.database
     schema = args.schema
     outputdir = args.output_directory
+    password = args.password
 
     check = 0
     if user is None or user == "":
@@ -118,10 +119,8 @@ else:
     os.mkdir(f"./output/{outputdir}")
 
 if authentication_method == "USERPASS":
-    if args.password is None:
+    if password is None:
         password = getpass()
-    else:
-        password = args.password
 
     authenticationObj = Authentication(
         warehouse=warehouse,
