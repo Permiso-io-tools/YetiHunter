@@ -1,7 +1,7 @@
 # YetiHunter
 ![image](.img/Yeti-Snowflake.png)
 Permiso Security has created a tool to query snowflake environments for evidence of compromise, based on indicators from Permiso and the community.\
-**Release Blog:** [[Introducing YetiHunter an open-source tool to detect and hunt for suspicious activity in snowflake](https://permiso.io/blog/introducing-yetihunter-an-open-source-tool-to-detect-and-hunt-for-suspicous-activity-in-snowflake)]
+**Release Blog:** [[Introducing YetiHunter an open-source tool to detect and hunt for suspicious activity in snowflake](https://permiso.io/blog/introducing-yetihunter-an-open-source-tool-to-detect-and-hunt-for-suspicious-activity-in-snowflake)]
 ````
 
                 ('-.   .-') _           ('-. .-.                  .-') _  .-') _     ('-.  _  .-')
