@@ -1,4 +1,4 @@
-# YettiHunter
+# yetihunter
 Permiso Security has created a tool to query snowflake environments for evidence of compromise, based on indicators from Permiso and the community.
 ## Installation
 ### Local Installation
@@ -8,10 +8,10 @@ python3 -m venv ./venv
 source venv/bin/activate
 python3 -m pip install -r requirements.txt
 ````
-Then, just run the tool by running **yettihunter.py**:
+Then, just run the tool by running **yetihunter.py**:
 ````
-python3 yettihunter.py -h
-usage: YettiHunter [-h] [-u USER] [-p PASSWORD] [-w WAREHOUSE] [-a ACCOUNT] [-d DATABASE] [-s SCHEMA] [-am {SSO,USERPASS}] [-cf CONFIG_FILE_PATH] [-gcf] [-o OUTPUT_DIRECTORY]
+python3 yetihunter.py -h
+usage: yetihunter [-h] [-u USER] [-p PASSWORD] [-w WAREHOUSE] [-a ACCOUNT] [-d DATABASE] [-s SCHEMA] [-am {SSO,USERPASS}] [-cf CONFIG_FILE_PATH] [-gcf] [-o OUTPUT_DIRECTORY]
 
 Permiso Security has created a tool to query snowflake environments for evidence of compromise, based on indicators from Permiso and the community.
 
@@ -39,12 +39,12 @@ options:
 ### Docker
 A Dockerfile is placed inside the main directory of the project. To build the image, inside the main directory of the project run:
 ````
-docker build -t yettihunter .
+docker build -t yetihunter .
 ````
 Then run the container with directories **output** and **configfiles** mounted to host:
 ````
-docker run -v ~/yettihunter/output:/yettihunter/output -v ~/yettihunter/configfiles:/yettihunter/configfiles -it yettihunter -h
-usage: YettiHunter [-h] [-u USER] [-p PASSWORD] [-w WAREHOUSE] [-a ACCOUNT] [-d DATABASE] [-s SCHEMA] [-am {SSO,USERPASS}] [-cf CONFIG_FILE_PATH] [-gcf] [-o OUTPUT_DIRECTORY]
+docker run -v ~/yetihunter/output:/yetihunter/output -v ~/yetihunter/configfiles:/yetihunter/configfiles -it yetihunter -h
+usage: yetihunter [-h] [-u USER] [-p PASSWORD] [-w WAREHOUSE] [-a ACCOUNT] [-d DATABASE] [-s SCHEMA] [-am {SSO,USERPASS}] [-cf CONFIG_FILE_PATH] [-gcf] [-o OUTPUT_DIRECTORY]
 
 Permiso Security has created a tool to query snowflake environments for evidence of compromise, based on indicators from Permiso and the community.
 

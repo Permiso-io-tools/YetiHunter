@@ -11,6 +11,12 @@ from core.Other.Resources.Queries import QUERIES
 
 args = parseArgs()
 
+if not os.path.exists("./configfiles"):
+    os.mkdir("./configfiles")
+
+if not os.path.exists("./output"):
+    os.mkdir("./output")
+
 if args.generate_config_file:
     with open("./configfiles/config.conf", 'w') as configfile:
         json.dump(CONFIGFILE, configfile, indent=4, default=str)
@@ -23,15 +29,43 @@ if args.config_file_path is not None:
         configJson = json.load(toolconfigfile)
         toolconfigfile.close()
 
+    check = 0
+
     user = configJson['USER']
     authentication_method = configJson['AUTHENTICATION_METHOD']
     warehouse = configJson['WAREHOUSE']
     account = configJson['ACCOUNT']
     database = configJson['DATABASE']
     outputdir = configJson['OUTPUTDIR']
-
     schema = configJson['SCHEMA']
     password = configJson['PASSWORD']
+
+    if user is None or user == "":
+        printOutput("User is a required option. Please provide a user on USER field of the config file", "failure")
+        check = 1
+
+    if authentication_method is None or authentication_method == "":
+        printOutput("Authentication method is a required option. Please provide an Authentication Method on AUTHENTICATION_METHOD field of the config file", "failure")
+        check = 1
+
+    if warehouse is None or warehouse == "":
+        printOutput("Warehouse is a required option. Please provide a warehouse on WAREHOUSE field of the config file", "failure")
+        check = 1
+
+    if account is None or account == "":
+        printOutput("Account is a required option. Please provide an account on ACCOUNT field of the config file", "failure")
+        check = 1
+
+    if database is None or database == "":
+        printOutput("Database is a required option. Please provide a database on DATABASE field of the config file", "failure")
+        check = 1
+
+    if outputdir is None or outputdir == "":
+        printOutput(f"Output directory is a required option. Put the output directory name on OUTPUTDIR field of the config file", "failure")
+        check = 1
+
+    if check != 0:
+        exit()
 
 else:
     user = args.user
@@ -42,9 +76,38 @@ else:
     schema = args.schema
     outputdir = args.output_directory
 
-if outputdir is None or outputdir == "":
-    printOutput(f"Output directory is a required option. Put the output directory name using -o flag", "failure")
-    exit()
+    check = 0
+    if user is None or user == "":
+        printOutput("User is a required option. Please provide a user using -u flag", "failure")
+        check = 1
+
+
+    if authentication_method is None or authentication_method == "":
+        printOutput("Authentication method is a required option. Please provide an Authentication Method using -am flag", "failure")
+        check = 1
+
+
+    if warehouse is None or warehouse == "":
+        printOutput("Warehouse is a required option. Please provide a warehouse using -w flag", "failure")
+        check = 1
+
+
+    if account is None or account == "":
+        printOutput("Account is a required option. Please provide an account using -a flag", "failure")
+        check = 1
+
+
+    if database is None or database == "":
+        printOutput("Database is a required option. Please provide a database using -d flag", "failure")
+        check = 1
+
+
+    if outputdir is None or outputdir == "":
+        printOutput(f"Output directory is a required option. Put the output directory name using -o flag", "failure")
+        check = 1
+
+    if check != 0:
+        exit()
 
 if os.path.exists(f'./output/{outputdir}'):
     printOutput(f"Output directory ./output/{outputdir} exists. put a new name", "failure")

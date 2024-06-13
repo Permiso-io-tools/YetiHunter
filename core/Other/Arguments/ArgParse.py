@@ -13,7 +13,7 @@ CONFIGFILE = {
 
 def parseArgs():
     parser = argparse.ArgumentParser(
-        prog='YettiHunter',
+        prog='yetihunter',
         description='Permiso Security has created a tool to query snowflake environments for evidence of compromise, based on indicators from Permiso and the community.',
     )
 
