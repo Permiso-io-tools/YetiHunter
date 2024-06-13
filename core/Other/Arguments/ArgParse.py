@@ -14,7 +14,7 @@ CONFIGFILE = {
 def parseArgs():
     parser = argparse.ArgumentParser(
         prog='YettiHunter',
-        description='In the mids of the Snowflake leak, Permiso Security has created a tool to query Snowflake environments for breaches in environments based on known IOCs or those found by us.',
+        description='Permiso Security has created a tool to query snowflake environments for evidence of compromise, based on indicators from Permiso and the community.',
     )
 
     parser.add_argument('-u', '--user', help="The Snowflake user to authenticate as. Even if the authentication is SSO, the email of the identity authenticating should be added.")

@@ -1,5 +1,5 @@
 # YettiHunter
-In the mids of the Snowflake leak, Permiso Security has created a tool to query Snowflake environments for breaches in environments based on known IOCs or those found by us.
+Permiso Security has created a tool to query snowflake environments for evidence of compromise, based on indicators from Permiso and the community.
 ## Installation
 ### Local Installation
 To install, the only thing needed, is to install the required libraries.
@@ -13,7 +13,7 @@ Then, just run the tool by running **yettihunter.py**:
 python3 yettihunter.py -h
 usage: YettiHunter [-h] [-u USER] [-p PASSWORD] [-w WAREHOUSE] [-a ACCOUNT] [-d DATABASE] [-s SCHEMA] [-am {SSO,USERPASS}] [-cf CONFIG_FILE_PATH] [-gcf] [-o OUTPUT_DIRECTORY]
 
-In the mids of the Snowflake leak, Permiso Security has created a tool to query Snowflake environments for breaches in environments based on known IOCs or those found by us.
+Permiso Security has created a tool to query snowflake environments for evidence of compromise, based on indicators from Permiso and the community.
 
 options:
   -h, --help            show this help message and exit
@@ -46,7 +46,7 @@ Then run the container with directories **output** and **configfiles** mounted t
 docker run -v ~/yettihunter/output:/yettihunter/output -v ~/yettihunter/configfiles:/yettihunter/configfiles -it yettihunter -h
 usage: YettiHunter [-h] [-u USER] [-p PASSWORD] [-w WAREHOUSE] [-a ACCOUNT] [-d DATABASE] [-s SCHEMA] [-am {SSO,USERPASS}] [-cf CONFIG_FILE_PATH] [-gcf] [-o OUTPUT_DIRECTORY]
 
-In the mids of the Snowflake leak, Permiso Security has created a tool to query Snowflake environments for breaches in environments based on known IOCs or those found by us.
+Permiso Security has created a tool to query snowflake environments for evidence of compromise, based on indicators from Permiso and the community.
 
 options:
   -h, --help            show this help message and exit
