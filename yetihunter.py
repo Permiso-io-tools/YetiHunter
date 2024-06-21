@@ -152,6 +152,7 @@ if conn is None:
     exit()
 
 results = {}
+printOutput(f"Loaded {str(len(QUERIES))} queries to check", "success")
 for queryDict in QUERIES:
     query = queryDict['query']
     name = queryDict['name']
